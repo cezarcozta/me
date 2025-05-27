@@ -5,20 +5,18 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export async function sendEmail(formData: FormData) {
+    const from = `${formData.get('name')} <${formData.get('email')}>`;
+    const to = 'cezarcozta@gmail.com';
+    const subject = formData.get('subject') as string;
+    const message = formData.get('message') as string;
     try {
-        const { data, error } = await resend.emails.send({
-          from: `${formData.get('name')} <${formData.get('email')}>`,
-          to: ['cezarcozta@gmail.com'],
-          subject: formData.get('subject') as string,
-          react: EmailTemplate({ message: formData.get('message') as string }),
+        await resend.emails.send({
+          from,
+          to,
+          subject,
+          react: EmailTemplate({ message }),
         });
-    
-        if (error) {
-          return {error};
-        }
-    
-        return {data};
-      } catch (error) {
+    } catch (error) {
         return {error};
-      }
+    }
 } 
