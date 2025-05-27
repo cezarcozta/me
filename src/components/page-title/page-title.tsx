@@ -7,19 +7,29 @@ interface IPageTitleProps {
 
 export default function PageTitle({ title, subtitle }: IPageTitleProps) {
   return (
-    <header className="relative bg-secondary/95 text-primary py-20 overflow-hidden">
+    <header 
+      className="relative bg-secondary/95 text-primary py-20 overflow-hidden"
+      role="banner"
+    >
       <div 
         className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,var(--secondary-light)_100%)] opacity-50 animate-gradient"
         style={{ 
           backgroundSize: '200% 200%',
         }}
+        aria-hidden="true"
       />
       <div className="container relative mx-auto px-4">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            tabIndex={0}
+          >
             {title}
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed">
+          <p 
+            className="text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed"
+            tabIndex={0}
+          >
             {subtitle}
           </p>
         </div>

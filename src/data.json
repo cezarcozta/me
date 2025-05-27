@@ -1,0 +1,147 @@
+{
+    "name": "César Augusto Costa",
+    "menu": {
+        "pt": {
+            "about": "Sobre",
+            "skills": "Habilidades",
+            "contact": "Contato"
+        },
+        "en": {
+            "about": "About",
+            "skills": "Skills",
+            "contact": "Contact"
+        }
+    },
+    "about": {
+        "pt": {
+            "title": "Sobre Mim",
+            "subtitle":"Conheça um pouco mais sobre minha trajetória e experiência profissional.",
+            "cardtitle": "Quem Sou"
+        },
+        "en": {
+            "title": "About Me",
+            "subtitle":"Learn more about my journey and professional experience.",  
+            "cardtitle": "Who Am I"
+        }
+    },
+    "skills": {
+        "pt": {
+            "title": "Minhas Habilidades",
+            "subtitle":"Conheça minhas principais habilidades e competências técnicas."
+        },
+        "en": {
+           "title": "Hard Skills",
+            "subtitle":"Learn more about my main skills and technical competencies."
+        }
+    },
+    "contact": {
+        "pt": {
+            "title": "Entre em contato",
+            "subtitle":"Vamos conversar! Preencha o formulário ou chama no zap ou me encontre nas redes sociais.",
+            "form": {
+                "name": "Nome",
+                "email": "Email",
+                "message": "Mensagem",
+                "send": "Enviar Email"
+            },
+            "contactInfo": {
+                "title": "Informações de Contato",
+                "email": "Email",
+                "phone": "Telefone",
+                "address": "Localização",
+                "social": "Me encontre nas redes sociais"
+            }
+        },
+        "en": {
+            "title": "Contact me",
+            "subtitle":"Let's talk! Fill out the form, send me a WhatsApp message, or find me on social media.",
+            "form": {
+                "name": "Name",
+                "email": "Email",
+                "message": "Message",
+                "send": "Send Mail"
+            },
+            "contactInfo": {
+                "title": "Contact Info",
+                "email": "Email",
+                "phone": "Phone",
+                "address": "Location",
+                "social": "Find me on social media"
+            }
+        }
+    },
+    "home": {
+        "pt": {
+            "title": "SEJA BEM VINDO",
+            "subtitle": "Transformando ideias em realidade.",
+            "aboutCard":{
+                "title": "Sobre Mim",
+                "subtitle": "Conheça um pouco mais sobre minha trajetória e experiência profissional."
+            },
+            "skillsCard":{
+                "title": "Habilidades",
+                "subtitle": "Explore minhas competências técnicas."
+            },
+            "specialtiesCard":{
+                "title": "Minhas Especialidades",
+                "webdevelopemnt": {
+                    "title": "Desenvolvimento Web",
+                    "description": "Criação de aplicações web modernas e escaláveis utilizando as melhores tecnologias do mercado."
+                },
+                "software": {
+                    "title": "Arquitetura de Software",
+                    "description": "Planejamento e implementação de soluções robustas e escaláveis para seu negócio."
+                },
+                "consult": {
+                    "title": "Consultoria Técnica",
+                    "description": "Orientação especializada para otimizar seus processos e tecnologias."
+                },
+                "genAi": {
+                    "title": "Inteligência Artificial",
+                    "description": "Desenvolvimento de soluções de inteligencia artificial e automatomação para otimizar seus processos."
+                }
+            },
+            "contactCard":{
+                "title": "Vamos Criar Algo Extraordinário?",
+                "subtitle": "Estou pronto para transformar sua visão em realidade",
+                "button": "Entre em Contato"
+            }
+        },
+        "en": {
+            "title": "WELLCOME",
+            "subtitle": "Transforming ideas into reality.",
+            "aboutCard":{
+                "title": "About Me",
+                "subtitle": "Learn more about my journey and professional experience."
+            },
+            "skillsCard":{
+                "title": "Skills",
+                "subtitle": "Explore my technical skills."
+            },
+            "specialtiesCard":{
+                "title": "My Specialties",
+                "webdevelopemnt": {
+                    "title": "Web Development",
+                    "description": "Creation of modern and scalable web applications using the best technologies on the market."
+                },
+                "software": {
+                    "title": "Software Architecture",
+                    "description": "Planning and implementation of robust and scalable solutions for your business."
+                },
+                "consult": {
+                    "title": "Technical Consulting",
+                    "description": "Specialized guidance to optimize your processes and technologies."
+                },
+                "genAi": {
+                    "title": "Artificial Intelligence",
+                    "description": "Development of artificial intelligence and automation solutions to optimize your processes."
+                }
+            },
+            "contactCard":{
+                "title": "Let's Create Something Extraordinary?",
+                "subtitle": "I'm ready to turn your vision into reality",
+                "button": "Contact Me"
+            }
+        }
+    }
+}
