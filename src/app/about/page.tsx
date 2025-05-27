@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import PageTitle from "@/components/page-title/page-title";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const Portuguese = () => {
+  
   return (
     <>
      <h2 
@@ -94,11 +96,13 @@ const English = () => {
 
 
 export default function About() {
+  const { t } = useTranslation();
+  console.log({t})
   return (
     <>
       <PageTitle
-        title="Sobre Mim"
-        subtitle="Conheça um pouco mais sobre minha trajetória e experiência profissional."
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
       />
 
       <main className="container mx-auto px-4 py-16">
@@ -110,14 +114,10 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
+            
             <Card className="overflow-hidden border-primary/10 hover:border-primary/20 transition-colors duration-300">
               <CardContent className="p-8">
-                <Portuguese />
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden border-primary/10 hover:border-primary/20 transition-colors duration-300">
-              <CardContent className="p-8">
-                <English />
+              {t('about.card') === 'pt' ? <Portuguese /> : <English />}
               </CardContent>
             </Card>
           </motion.article>

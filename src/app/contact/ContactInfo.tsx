@@ -1,64 +1,67 @@
 "use client";
 
 import { Github, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    text: "São Paulo, SP - Brasil",
-    label: "Localização",
-    ariaLabel: "Localização: São Paulo, SP - Brasil",
-  },
-  {
-    icon: Mail,
-    text: "cezarcozta@gmail.com",
-    label: "Email",
-    ariaLabel: "Email: cezarcozta@gmail.com",
-  },
-  {
-    icon: Phone,
-    text: "Click para WhatsApp",
-    label: "Telefone",
-    href: "https://api.whatsapp.com/send?phone=11973328747",
-    ariaLabel: "Telefone: +55 (11) 97332-8747",
-  }
-];
-
-const socialLinks = [
-  {
-    name: "GitHub",
-    url: "https://github.com/cezarcozta",
-    icon: Github,
-    color: "hover:text-[#333]",
-    ariaLabel: "Perfil no GitHub",
-  },
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/cezarcozta",
-    icon: Linkedin,
-    color: "hover:text-[#0077b5]",
-    ariaLabel: "Perfil no LinkedIn",
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/cezarcozta",
-    icon: Twitter,
-    color: "hover:text-[#1da1f2]",
-    ariaLabel: "Perfil no Twitter",
-  },
-];
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export const ContactInfo = () => {
+  const { t } = useTranslation();
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      text: "São Paulo, SP - Brasil",
+      label: t('contact.contactInfo.address'),
+      ariaLabel: `${t('contact.contactInfo.address')}: São Paulo, SP - Brasil`,
+    },
+    {
+      icon: Mail,
+      text: "cezarcozta@gmail.com",
+      label: t('contact.contactInfo.email'),
+      ariaLabel: `${t('contact.contactInfo.email')}: cezarcozta@gmail.com`,
+    },
+    {
+      icon: Phone,
+      text:  'WhatsApp',
+      label: t('contact.contactInfo.phone'),
+      href: "https://api.whatsapp.com/send?phone=11973328747",
+      ariaLabel: `${t('contact.contactInfo.phone')}: +55 (11) 97332-8747`,
+    }
+  ];
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/cezarcozta",
+      icon: Github,
+      color: "hover:text-[#333]",
+      ariaLabel: "Perfil no GitHub",
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/cezarcozta",
+      icon: Linkedin,
+      color: "hover:text-[#0077b5]",
+      ariaLabel: "Perfil no LinkedIn",
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com/cezarcozta",
+      icon: Twitter,
+      color: "hover:text-[#1da1f2]",
+      ariaLabel: "Perfil no Twitter",
+    },
+  ];
+
   return (
     <div 
       className="bg-white/5 backdrop-blur-sm rounded-lg p-6 shadow-sm h-full"
       role="region"
-      aria-label="Informações de contato"
+      aria-label={t('contact.contactInfo.title')}
     >
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold mb-4" tabIndex={0}>
-            Informações de Contato
+            {t('contact.contactInfo.title')}
           </h3>
           <div className="space-y-4">
             {contactInfo.map((info) => (
@@ -106,10 +109,10 @@ export const ContactInfo = () => {
         <div 
           className="pt-6 border-t border-primary/10"
           role="navigation"
-          aria-label="Redes sociais"
+          aria-label={t('contact.contactInfo.social')}
         >
           <h4 className="text-sm font-medium mb-4" tabIndex={0}>
-            Me encontre nas redes
+            {t('contact.contactInfo.social')}
           </h4>
           <div className="flex justify-center space-x-4">
             {socialLinks.map((social) => (

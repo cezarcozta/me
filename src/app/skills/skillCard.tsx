@@ -3,6 +3,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, Badge } from "@/components/ui";
 import { motion } from "framer-motion";
 import { Book, Code, Database, Lightbulb, Terminal, Variable, Cloud, Calendar } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import type { ReactElement } from "react";
 
 const IconMap = {
@@ -27,6 +28,7 @@ interface SkillCardProps {
 }
 
 export const SkillCard = ({ skill, index }: SkillCardProps): ReactElement => {
+  const { t } = useTranslation();
   const { name, level, category, iconName, years } = skill;
   const Icon = IconMap[iconName];
   
@@ -40,7 +42,7 @@ export const SkillCard = ({ skill, index }: SkillCardProps): ReactElement => {
         className="group h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-primary"
         tabIndex={0}
         role="article"
-        aria-label={`Habilidade: ${name}`}
+        aria-label={`${t('skills.ariaLabels.skill')}: ${name}`}
       >
         <CardHeader className="pb-4">
           <div className="flex items-start justify-between">
@@ -61,9 +63,9 @@ export const SkillCard = ({ skill, index }: SkillCardProps): ReactElement => {
                 <Badge 
                   variant="secondary" 
                   className="text-xs font-normal"
-                  aria-label={`Categoria: ${category}`}
+                  aria-label={`${t('skills.ariaLabels.category')}: ${t(`skills.categories.${category.toLowerCase()}`)}`}
                 >
-                  {category}
+                  {t(`skills.categories.${category.toLowerCase()}`)}
                 </Badge>
               </div>
             </div>
@@ -77,15 +79,15 @@ export const SkillCard = ({ skill, index }: SkillCardProps): ReactElement => {
               <div 
                 className="flex justify-between mb-2 text-sm"
                 role="group"
-                aria-label="Nível de proficiência"
+                aria-label={t('skills.ariaLabels.proficiencyLevel')}
               >
-                <span className="text-muted-foreground">Nível de Proficiência</span>
+                <span className="text-muted-foreground">{t('skills.proficiencyLevel')}</span>
                 <Badge 
                   variant="default" 
                   className="text-xs font-bold text-foreground"
-                  aria-label={`${level} de proficiência`}
+                  aria-label={`${t(`skills.levels.${level.toLowerCase()}`)}`}
                 >
-                  {level}
+                  {t(`skills.levels.${level.toLowerCase()}`)}
                 </Badge>
               </div>
             </div>
@@ -95,13 +97,13 @@ export const SkillCard = ({ skill, index }: SkillCardProps): ReactElement => {
         <CardFooter 
           className="pt-2 text-sm text-muted-foreground border-t"
           role="contentinfo"
-          aria-label="Tempo de experiência"
+          aria-label={t('skills.ariaLabels.experience')}
         >
           <div className="flex items-center gap-2">
             <Calendar className="h-6 w-6 text-primary font-bold transition-colors duration-300"/>
-            <p tabIndex={0} className="text-muted-foreground">Experiência:</p>
+            <p tabIndex={0} className="text-muted-foreground">{t('skills.experience')}:</p>
             <p tabIndex={1} className="font-bold">
-              {years} {years === 1 ? 'ano' : 'anos'}
+              {years} {t(years === 1 ? 'skills.year' : 'skills.years')}
             </p>
           </div>
         </CardFooter>

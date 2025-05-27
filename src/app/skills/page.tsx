@@ -1,80 +1,83 @@
+'use client';
+
 import PageTitle from "@/components/page-title/page-title";
 import { SkillCard } from "./skillCard";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const skills = [
   {
     name: "JavaScript",
-    level: 'AVANÇADO',
-    category: "Desenvolvimento",
+    level: 'ADVANCED',
+    category: "Development",
     iconName: "Code",
     years: 6,
   },
   {
     name: "TypeScript",
-    level: 'INTERMEDIÁRIO',
-    category: "Desenvolvimento",
+    level: 'INTERMEDIATE',
+    category: "Development",
     iconName: "Variable",
     years: 6,
   },
   {
     name: "Python",
-    level: 'NOVATO',
-    category: "Desenvolvimento",
+    level: 'BEGINNER',
+    category: "Development",
     iconName: "Book",
     years: 3,
   },
   {
     name: "React",
-    level: 'AVANÇADO',
+    level: 'ADVANCED',
     category: "Frontend",
     iconName: "Terminal",
     years: 6,
   },
   {
     name: "Next.js",
-    level: 'AVANÇADO',
+    level: 'ADVANCED',
     category: "Fullstack",
     iconName: "Terminal",
     years: 6,
   },
   {
     name: "UI/UX Design",
-    level: 'NOVATO',
+    level: 'BEGINNER',
     category: "Design",
     iconName: "Lightbulb",
     years: 2,
   },
   {
     name: "Node.js",
-    level: 'INTERMEDIÁRIO',
+    level: 'INTERMEDIATE',
     category: "Backend",
     iconName: "Database",
     years: 6,
   },
   {
     name: "Express.js",
-    level: 'AVANÇADO',
+    level: 'ADVANCED',
     category: "Backend",
     iconName: "Database",
     years: 6,
   },
   {
     name: "AWS",
-    level: 'INTERMEDIÁRIO',
+    level: 'INTERMEDIATE',
     category: "Cloud Provider",
     iconName: "Cloud",
     years: 3,
   },
   {
     name: "Azure",
-    level: 'NOVATO',
+    level: 'BEGINNER',
     category: "Cloud Provider",
     iconName: "Cloud",
     years: 3,
   },
   {
     name: "GCP",
-    level: 'NOVATO',
+    level: 'BEGINNER',
     category: "Cloud Provider",
     iconName: "Cloud",
     years: 1,
@@ -84,21 +87,23 @@ const skills = [
 const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
 export default function Skills() {
+  const { t } = useTranslation();
+
   return (
     <>
       <PageTitle
         key="page-title-skills"
-        title="Minhas Habilidades"
-        subtitle="Conheça minhas principais habilidades e competências técnicas."
+        title={t('skills.title')}
+        subtitle={t('skills.subtitle')}
       />
       <main>
         <section 
           className="py-16 container mx-auto px-4"
-          aria-label="Lista de habilidades técnicas"
+          aria-label={t('skills.ariaLabels.skillsList')}
         >
           <nav 
             className="mb-8 flex flex-wrap gap-4 justify-center"
-            aria-label="Filtro por categorias"
+            aria-label={t('skills.ariaLabels.categoryFilter')}
           >
             {categories.map((category) => (
               <button
@@ -108,14 +113,14 @@ export default function Skills() {
                 aria-selected="false"
                 aria-controls={`skills-${category.toLowerCase()}`}
               >
-                {category}
+                {t(`skills.categories.${category.toLowerCase()}`)}
               </button>
             ))}
           </nav>
           <div 
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr"
             role="tabpanel"
-            aria-label="Lista de habilidades"
+            aria-label={t('skills.ariaLabels.skillsList')}
           >
             {skills.map((skill, index) => (
               <div

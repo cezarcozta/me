@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, User, MessageSquare, Loader2 } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const initialFormData = () => {
   return {  
@@ -17,6 +18,7 @@ const initialFormData = () => {
 };
 
 export const SendEmailForm = () => {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -24,13 +26,13 @@ export const SendEmailForm = () => {
   const validateField = (name: string, value: string): string => {
     switch (name) {
       case 'name':
-        return value.length < 3 ? 'O nome deve ter pelo menos 3 caracteres' : '';
+        return value.length < 3 ? t('contact.form.errors.nameMin') : '';
       case 'email':
-        return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? 'Email inválido' : '';
+        return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? t('contact.form.errors.emailInvalid') : '';
       case 'subject':
-        return value.length < 5 ? 'O assunto deve ter pelo menos 5 caracteres' : '';
+        return value.length < 5 ? t('contact.form.errors.subjectMin') : '';
       case 'message':
-        return value.length < 10 ? 'A mensagem deve ter pelo menos 10 caracteres' : '';
+        return value.length < 10 ? t('contact.form.errors.messageMin') : '';
       default:
         return '';
     }
@@ -77,18 +79,21 @@ export const SendEmailForm = () => {
 
     try {
       // Here you would typically make an API call to your email service
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulating API call
-      
-      toast.success("Mensagem enviada com sucesso!", {
-        description: "Entrarei em contato em breve.",
+      const response = await fetch('/api/send',{method: 'POST', body: JSON.stringify(formData)}); // Simulating API call
+      if (response.ok) {
+        toast.success(t('contact.form.success.title'), {
+          description: t('contact.form.success.description'),
+        });
+        setFormData(initialFormData);
+        setErrors({});
+      }  
+      toast.error(t('contact.form.error.title'), {
+        description: t('contact.form.error.description'),
       });
-      
-      setFormData(initialFormData());
-      setErrors({});
     } catch (error: unknown) {
       console.error('Error sending message:', error);
-      toast.error("Erro ao enviar mensagem", {
-        description: "Por favor, tente novamente mais tarde.",
+      toast.error(t('contact.form.error.title'), {
+        description: t('contact.form.error.description'),
       });
     } finally {
       setIsSubmitting(false);
@@ -99,7 +104,7 @@ export const SendEmailForm = () => {
     <div 
       className="bg-white/5 backdrop-blur-sm rounded-lg p-6 shadow-sm"
       role="form"
-      aria-label="Formulário de contato"
+      aria-label={t('contact.form.title')}
     >
       <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div className="space-y-4">
@@ -110,13 +115,13 @@ export const SendEmailForm = () => {
                 className="text-sm font-medium flex items-center gap-2"
               >
                 <User className="w-4 h-4" aria-hidden="true" />
-                Nome
+                {t('contact.form.name')}
                 <span className="text-red-500">*</span>
               </label>
               <Input
                 id="name"
                 name="name"
-                placeholder="Seu nome completo"
+                placeholder={t('contact.form.namePlaceholder')}
                 value={formData.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -139,14 +144,14 @@ export const SendEmailForm = () => {
                 className="text-sm font-medium flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" aria-hidden="true" />
-                Email
+                {t('contact.form.email')}
                 <span className="text-red-500">*</span>
               </label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="seu@email.com"
+                placeholder={t('contact.form.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -170,13 +175,13 @@ export const SendEmailForm = () => {
               className="text-sm font-medium flex items-center gap-2"
             >
               <MessageSquare className="w-4 h-4" aria-hidden="true" />
-              Assunto
+              {t('contact.form.subject')}
               <span className="text-red-500">*</span>
             </label>
             <Input
               id="subject"
               name="subject"
-              placeholder="Assunto da sua mensagem"
+              placeholder={t('contact.form.subjectPlaceholder')}
               value={formData.subject}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -199,13 +204,14 @@ export const SendEmailForm = () => {
               htmlFor="message" 
               className="text-sm font-medium flex items-center gap-2"
             >
-              Mensagem
+              <MessageSquare className="w-4 h-4" aria-hidden="true" />
+              {t('contact.form.message')}
               <span className="text-red-500">*</span>
             </label>
             <Textarea
               id="message"
               name="message"
-              placeholder="Digite sua mensagem aqui..."
+              placeholder={t('contact.form.messagePlaceholder')}
               value={formData.message}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -213,8 +219,7 @@ export const SendEmailForm = () => {
               aria-required="true"
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? "message-error" : undefined}
-              className="bg-white/30 border-primary/20 focus:border-primary min-h-[150px] resize-none placeholder:text-gray-600"
-              rows={6}
+              className="bg-white/30 border-primary/20 focus:border-primary min-h-[120px] placeholder:text-gray-600"
               minLength={10}
             />
             {errors.message && (
@@ -227,21 +232,16 @@ export const SendEmailForm = () => {
 
         <Button
           type="submit"
-          className="w-full md:w-auto px-8 h-12 bg-primary text-white hover:bg-primary/90 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-primary"
           disabled={isSubmitting}
-          aria-disabled={isSubmitting}
-          aria-label={isSubmitting ? "Enviando mensagem..." : "Enviar mensagem"}
+          className="w-full h-12 text-base font-medium"
         >
           {isSubmitting ? (
-            <span className="flex items-center gap-2">
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-              Enviando...
-            </span>
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              {t('contact.form.sending')}
+            </>
           ) : (
-            <span className="flex items-center gap-2">
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              Enviar Email
-            </span>
+            t('contact.form.send')
           )}
         </Button>
       </form>

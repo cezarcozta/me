@@ -5,24 +5,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Code, Layout, Lightbulb, ArrowRight } from "lucide-react";
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export default function Home() {
+  const { t } = useTranslation();
+
   const services = [
     {
-      title: "Desenvolvimento Web",
-      description: "Criação de aplicações web modernas e escaláveis utilizando as melhores tecnologias do mercado.",
+      title: t('home.specialtiesCard.webdevelopemnt.title'),
+      description: t('home.specialtiesCard.webdevelopemnt.description'),
       icon: Code,
       ariaLabel: "Serviço de Desenvolvimento Web",
     },
     {
-      title: "Arquitetura de Software",
-      description: "Planejamento e implementação de soluções robustas e escaláveis para seu negócio.",
+      title: t('home.specialtiesCard.software.title'),
+      description: t('home.specialtiesCard.software.description'),
       icon: Layout,
       ariaLabel: "Serviço de Arquitetura de Software",
     },
     {
-      title: "Consultoria Técnica",
-      description: "Orientação especializada para otimizar seus processos e tecnologias.",
+      title: t('home.specialtiesCard.consult.title'),
+      description: t('home.specialtiesCard.consult.description'),
       icon: Lightbulb,
       ariaLabel: "Serviço de Consultoria Técnica",
     },
@@ -31,24 +34,25 @@ export default function Home() {
   const navigationLinks = [
     {
       href: "/about",
-      text: "Sobre",
-      description: "Conheça minha trajetória e experiência",
+      text: t('menu.about'),
+      description: t('about.subtitle'),
       ariaLabel: "Ir para página Sobre - Conheça minha trajetória e experiência",
     },
     {
       href: "/skills",
-      text: "Habilidades",
-      description: "Explore minhas competências técnicas",
+      text: t('menu.skills'),
+      description: t('skills.subtitle'),
       ariaLabel: "Ir para página Habilidades - Explore minhas competências técnicas",
     },
   ];
 
   return (
     <main className="min-h-screen">
+
       <PageTitle
         key="page-title-home"
-        title="SEJA BEM VINDO"
-        subtitle="Transformando ideias em realidade"
+        title={t('home.title')}
+        subtitle={t('home.subtitle')}
       />
 
       <div className="container mx-auto px-4">
@@ -73,10 +77,10 @@ export default function Home() {
                     <h2 className="text-xl font-semibold mb-2 group-hover:text-primary group-focus:text-primary transition-colors">
                       {link.text}
                     </h2>
-                    <p className="text-muted-foreground group-hover:text-foreground group-focus:text-foreground mb-4">
+                    <p className="text-muted group-hover:text-foreground group-focus:text-foreground mb-4">
                       {link.description}
                     </p>
-                    <ArrowRight className="w-5 h-5 text-secondary transform group-hover:translate-x-2 group-focus:translate-x-2 transition-transform" />
+                    <ArrowRight className="w-5 h-5 text-foreground transform group-hover:translate-x-2 group-focus:translate-x-2 transition-transform" />
                   </div>
                 </Link>
               ))}
@@ -93,7 +97,7 @@ export default function Home() {
           aria-labelledby="services-title"
         >
           <h2 id="services-title" className="text-2xl font-bold text-center mb-8">
-            Minhas Especialidades
+            {t('home.specialtiesCard.title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => (
@@ -128,16 +132,16 @@ export default function Home() {
           aria-label="Seção de contato"
         >
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 shadow-sm text-center">
-            <h2 className="text-2xl font-bold mb-4">Vamos Criar Algo Extraordinário?</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('home.contactCard.title')}</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Estou pronto para transformar sua visão em realidade
+              {t('home.contactCard.subtitle')}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center space-x-2 px-8 py-3 bg-primary/10 rounded-full font-medium hover:bg-primary/20 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
               aria-label="Entre em contato para discutir seu projeto"
             >
-              <span>Entre em Contato</span>
+              <span>{t('home.contactCard.button')}</span>
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
           </div>

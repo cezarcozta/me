@@ -1,5 +1,4 @@
 {
-    "name": "César Augusto Costa",
     "menu": {
         "pt": {
             "about": "Sobre",
@@ -16,22 +15,58 @@
         "pt": {
             "title": "Sobre Mim",
             "subtitle":"Conheça um pouco mais sobre minha trajetória e experiência profissional.",
+            "card": "pt",
             "cardtitle": "Quem Sou"
         },
         "en": {
             "title": "About Me",
-            "subtitle":"Learn more about my journey and professional experience.",  
+            "subtitle":"Learn more about my journey and professional experience.",
+            "card": "en",
             "cardtitle": "Who Am I"
         }
     },
     "skills": {
         "pt": {
             "title": "Minhas Habilidades",
-            "subtitle":"Conheça minhas principais habilidades e competências técnicas."
+            "subtitle":"Conheça minhas principais habilidades e competências técnicas.",
+            "proficiencyLevel": "Nível de Proficiência",
+            "experience": "Experiência",
+            "years": "Anos",
+            "year": "Ano",
+            "categories":{
+                "development": "Desenvolvimento",
+                "frontend": "Frontend",
+                "backend": "Backend",
+                "fullstack": "Fullstack",
+                "devops": "Cloud Provider",
+                "design": "Design"
+            },
+            "levels":{
+                "beginner": "Iniciante",
+                "intermediate": "Intermediário",
+                "advanced": "Avançado"
+            }
         },
         "en": {
            "title": "Hard Skills",
-            "subtitle":"Learn more about my main skills and technical competencies."
+            "subtitle":"Learn more about my main skills and technical competencies.",
+            "proficiencyLevel": "Proficiency Level",
+            "experience": "Experience",
+            "years": "Years",
+            "year": "Year",
+            "categories":{
+                "development": "Development",
+                "frontend": "Frontend",
+                "backend": "Backend",
+                "fullstack": "Fullstack",
+                "devops": "Cloud Provider",
+                "design": "Design"
+            },
+            "levels":{
+                "beginner": "Beginner",
+                "intermediate": "Intermediate",
+                "advanced": "Advanced"
+            }
         }
     },
     "contact": {
@@ -40,8 +75,13 @@
             "subtitle":"Vamos conversar! Preencha o formulário ou chama no zap ou me encontre nas redes sociais.",
             "form": {
                 "name": "Nome",
+                "namePlaceholder": "Digite seu nome",
                 "email": "Email",
+                "emailPlaceholder": "Digite seu email",
+                "subject": "Assunto",
+                "subjectPlaceholder": "Digite o assunto da mensagem",
                 "message": "Mensagem",
+                "messagePlaceholder": "Digite sua mensagem",
                 "send": "Enviar Email"
             },
             "contactInfo": {
@@ -57,8 +97,13 @@
             "subtitle":"Let's talk! Fill out the form, send me a WhatsApp message, or find me on social media.",
             "form": {
                 "name": "Name",
+                "namePlaceholder": "Enter your name",
                 "email": "Email",
+                "emailPlaceholder": "Enter your email",
+                "subject": "Subject",
+                "subjectPlaceholder": "Enter the message subject",
                 "message": "Message",
+                "messagePlaceholder": "Enter your message",
                 "send": "Send Mail"
             },
             "contactInfo": {
