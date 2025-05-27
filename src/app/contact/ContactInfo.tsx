@@ -23,7 +23,7 @@ export const ContactInfo = () => {
       icon: Phone,
       text:  'WhatsApp',
       label: t('contact.contactInfo.phone'),
-      href: "https://api.whatsapp.com/send?phone=11973328747",
+      href: "https://api.whatsapp.com/send?phone=5511973328747",
       ariaLabel: `${t('contact.contactInfo.phone')}: +55 (11) 97332-8747`,
     }
   ];
