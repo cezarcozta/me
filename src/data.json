@@ -82,7 +82,8 @@
                 "subjectPlaceholder": "Digite o assunto da mensagem",
                 "message": "Mensagem",
                 "messagePlaceholder": "Digite sua mensagem",
-                "send": "Enviar Email"
+                "send": "Enviar Email",
+                "sending": "Enviando..."
             },
             "contactInfo": {
                 "title": "Informações de Contato",
@@ -104,7 +105,8 @@
                 "subjectPlaceholder": "Enter the message subject",
                 "message": "Message",
                 "messagePlaceholder": "Enter your message",
-                "send": "Send Mail"
+                "send": "Send Mail",
+                "sending": "Sending..."
             },
             "contactInfo": {
                 "title": "Contact Info",
