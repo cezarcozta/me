@@ -7,6 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, User, MessageSquare, Loader2 } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { z } from "zod";
+
+const sendEmailSchema = z.object({
+  name: z.string().min(3, { message: "Name must be at least 3 characters" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(5, { message: "Subject must be at least 5 characters" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters" }),
+});
 
 const initialFormData = () => {
   return {  
@@ -23,20 +31,35 @@ export const SendEmailForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case 'name':
-        return value.length < 3 ? t('contact.form.errors.nameMin') : '';
-      case 'email':
-        return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? t('contact.form.errors.emailInvalid') : '';
-      case 'subject':
-        return value.length < 5 ? t('contact.form.errors.subjectMin') : '';
-      case 'message':
-        return value.length < 10 ? t('contact.form.errors.messageMin') : '';
-      default:
-        return '';
+ const validateForm = () => {
+  try {
+    sendEmailSchema.safeParse(formData)
+    setErrors(initialFormData)
+    return true
+  } catch (err) {
+    if(err instanceof z.ZodError) {
+      const error = err as z.ZodError
+      const newErrors = initialFormData();
+      error.errors.forEach((err) => {
+        const field = err.path[0];
+        if(field === 'name') {
+          newErrors[field] = error.message
+        } 
+        if(field === 'email') {
+          newErrors[field] = error.message
+        } 
+        if(field === 'subject') {
+          newErrors[field] = error.message
+        } 
+        if(field === 'message') {
+          newErrors[field] = error.message
+        }
+      })
+      setErrors(newErrors)
     }
-  };
+    return false
+  }
+ }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -50,51 +73,32 @@ export const SendEmailForm = () => {
     }
   };
 
-  const handleBlur = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    const error = validateField(name, value);
-    if (error) {
-      setErrors(prev => ({ ...prev, [name]: error }));
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Valida todos os campos antes de enviar
-    const newErrors: Record<string, string> = {};
-    Object.keys(formData).forEach(key => {
-      const error = validateField(key, formData[key as keyof typeof formData]);
-      if (error) newErrors[key] = error;
-    });
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
 
     try {
-      // Here you would typically make an API call to your email service
-      const response = await fetch('/api/send',{method: 'POST', body: JSON.stringify(formData)}); // Simulating API call
+      e.preventDefault();
+
+      const isValid = validateForm();
+      
+      if(!isValid) {
+        toast.error('Formulário inválido');
+      };
+
+      setIsSubmitting(true);
+      
+      const response = await fetch('/api/send',{ method: 'POST', body: JSON.stringify(formData) });
+      
       if (response.ok) {
-        toast.success(t('contact.form.success.title'), {
-          description: t('contact.form.success.description'),
-        });
+        toast.success('Email enviado com sucesso');
         setFormData(initialFormData);
         setErrors({});
+        return;
       }  
-      toast.error(t('contact.form.error.title'), {
-        description: t('contact.form.error.description'),
-      });
+      toast.error(`${response.statusText}`);
     } catch (error: unknown) {
-      console.error('Error sending message:', error);
-      toast.error(t('contact.form.error.title'), {
-        description: t('contact.form.error.description'),
-      });
+      const err = error as Error;
+      toast.error(`${err.message}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -124,7 +128,6 @@ export const SendEmailForm = () => {
                 placeholder={t('contact.form.namePlaceholder')}
                 value={formData.name}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 required
                 aria-required="true"
                 aria-invalid={!!errors.name}
@@ -154,7 +157,6 @@ export const SendEmailForm = () => {
                 placeholder={t('contact.form.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 required
                 aria-required="true"
                 aria-invalid={!!errors.email}
@@ -184,7 +186,6 @@ export const SendEmailForm = () => {
               placeholder={t('contact.form.subjectPlaceholder')}
               value={formData.subject}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               aria-required="true"
               aria-invalid={!!errors.subject}
@@ -214,7 +215,6 @@ export const SendEmailForm = () => {
               placeholder={t('contact.form.messagePlaceholder')}
               value={formData.message}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               aria-required="true"
               aria-invalid={!!errors.message}
