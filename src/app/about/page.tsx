@@ -74,9 +74,9 @@ const English = () => {
           className="text-lg leading-relaxed text-primary/50"
           tabIndex={0}
         >
-          Currently based in <span className="text-primary font-semibold">Santo André, SP</span>, with a diverse background in the tech industry. 
+          based in <span className="text-primary font-semibold">Santo André, SP</span>, with a diverse background in the tech industry. 
           I began my journey in support, moved into maintaining legacy systems, and later transitioned 
-          to <span className="text-primary font-semibold">Mobile Frontend Development</span>. Currently, I work in <span className="text-primary font-semibold">Backend Development</span>,
+          to <span className="text-primary font-semibold">Mobile Frontend Development</span>. Currently, I&apos;m workin with <span className="text-primary font-semibold">Backend Development</span>,
           <span className="text-primary font-semibold"> Systems Integrations</span> and <span className="text-primary font-semibold">Artificial Intelligence</span>.
         </p>
         <p 
