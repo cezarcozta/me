@@ -64,21 +64,21 @@ const skills = [
   {
     name: "AWS",
     level: 'INTERMEDIATE',
-    category: "Cloud Provider",
+    category: "devops",
     iconName: "Cloud",
     years: 3,
   },
   {
     name: "Azure",
     level: 'BEGINNER',
-    category: "Cloud Provider",
+    category: "devops",
     iconName: "Cloud",
     years: 3,
   },
   {
     name: "GCP",
     level: 'BEGINNER',
-    category: "Cloud Provider",
+    category: "devops",
     iconName: "Cloud",
     years: 1,
   },
@@ -98,11 +98,11 @@ export default function Skills() {
       />
       <main>
         <section 
-          className="py-16 container mx-auto px-4"
+          className="py-8 container mx-auto px-4"
           aria-label={t('skills.ariaLabels.skillsList')}
         >
           <nav 
-            className="mb-8 flex flex-wrap gap-4 justify-center"
+            className="mb-6 flex flex-wrap gap-4 justify-center"
             aria-label={t('skills.ariaLabels.categoryFilter')}
           >
             {categories.map((category) => (
@@ -118,7 +118,7 @@ export default function Skills() {
             ))}
           </nav>
           <div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr"
             role="tabpanel"
             aria-label={t('skills.ariaLabels.skillsList')}
           >
