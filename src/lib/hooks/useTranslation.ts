@@ -5,6 +5,7 @@ import data from '../../data.json';
 
 type TranslationData = typeof data;
 type TranslationKey = keyof TranslationData;
+type NestedTranslation = string | { [key: string]: NestedTranslation };
 
 export function useTranslation() {
   const { language } = useLanguage();
@@ -26,13 +27,22 @@ export function useTranslation() {
         return key;
       }
 
-      let result = langData as any;
+      let result: NestedTranslation = langData;
       for (let i = 1; i < keys.length; i++) {
+        if (typeof result === 'string') {
+          console.warn(`Unexpected end of translation path at ${keys.slice(0, i).join('.')}`);
+          return key;
+        }
         result = result[keys[i]];
         if (result === undefined) {
           console.warn(`Translation key not found: ${key}`);
           return key;
         }
+      }
+
+      if (typeof result !== 'string') {
+        console.warn(`Translation value is not a string: ${key}`);
+        return key;
       }
 
       return result;
