@@ -12,7 +12,7 @@ export async function sendEmail(data: { name: string; email: string; subject: st
     const to = ["cezarcozta@gmail.com"];
     const subject = data.subject as string;
     const message = data.message as string;
-    console.log({name, email, from, to, subject, message})
+
     try {
         await resend.emails.send({
           from,
