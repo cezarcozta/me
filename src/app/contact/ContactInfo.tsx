@@ -5,7 +5,7 @@ import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export const ContactInfo = () => {
   const { t } = useTranslation();
-
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const contactInfo = [
     {
       icon: MapPin,
@@ -23,7 +23,7 @@ export const ContactInfo = () => {
       icon: Phone,
       text:  'WhatsApp',
       label: t('contact.contactInfo.phone'),
-      href: "https://api.whatsapp.com/send?phone=5511973328747",
+      href: `https://api.whatsapp.com/send?phone=${whatsappNumber}`,
       ariaLabel: `${t('contact.contactInfo.phone')}: +55 (11) 97332-8747`,
     }
   ];

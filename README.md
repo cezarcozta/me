@@ -41,7 +41,21 @@ yarn install
 pnpm install
 ```
 
-3. Run the development server:
+3. Set up your Resend API key:
+- Sign up at [Resend](https://resend.com)
+- Go to your dashboard
+- Verify your domain for sending emails
+- Create an API key
+- Resend Test
+
+4. Set up environment variables:
+Create a `.env` file in the root directory and add, check env.example:
+```env
+RESEND_API_KEY=your_resend_api_key
+NEXT_PUBLIC_WHATSAPP_NUMBER=yourwhatsappnumber
+```
+
+5. Run the development server:
 ```bash
 npm run dev
 # or
@@ -52,7 +66,7 @@ pnpm dev
 bun dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 🏗️ Project Structure
 
