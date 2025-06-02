@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Status
+## Production Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6f0f8cd0-4f72-460b-8d87-5e5609ad7da6/deploy-status)](https://app.netlify.com/projects/cezarcozta/deploys)
 
 
@@ -28,8 +28,8 @@ A modern web application built with Next.js, featuring best practices and a scal
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd <your-project-name>
+git clone git@github.com/cezarcozta/me
+cd me
 ```
 
 2. Install dependencies:
@@ -90,5 +90,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📫 Contact
 
 cezarcozta - [@cezarcozta](https://www.linkedin.com/in/cezarcozta/)
-
-Project Link: [https://github.com/cezarcozta/me](https://github.com/cezarcozta/me)
