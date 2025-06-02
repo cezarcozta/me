@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export const ContactInfo = () => {
@@ -49,6 +49,13 @@ export const ContactInfo = () => {
       icon: Twitter,
       color: "hover:text-[#1da1f2]",
       ariaLabel: "Perfil no Twitter",
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/cezarcozta/",
+      icon: Instagram,
+      color: "hover:text-[#E4405F]",
+      ariaLabel: "Perfil no Instagram",
     },
   ];
 
