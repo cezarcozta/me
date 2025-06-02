@@ -6,22 +6,21 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Validate request body against schema
-    const result = sendEmailSchema.safeParse(body);
+    const validation = sendEmailSchema.safeParse(body);
 
-    if (!result.success) {
+    if (!validation.success) {
       // Return validation errors
       return NextResponse.json(
         { 
           error: "Validation failed", 
-          errors: result.error.flatten().fieldErrors 
+          errors: validation.error.flatten().fieldErrors 
         }, 
         { status: 400 }
       );
     }
 
-    // Send email with validated data
-    await sendEmail(result.data);
+    const data = validation.data;
+    await sendEmail(data);
 
     return NextResponse.json(
       { message: 'Email Sent Successfully' }, 
