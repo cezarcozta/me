@@ -69,6 +69,8 @@ export const ContactInfo = () => {
                 {info.href ? (
                   <a
                     href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary"
                     aria-label={info.ariaLabel}
                   >
