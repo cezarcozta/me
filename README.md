@@ -1,11 +1,12 @@
 # Next.js Project 🚀
 
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-blueviolet.svg)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6f0f8cd0-4f72-460b-8d87-5e5609ad7da6/deploy-status)](https://app.netlify.com/projects/cezarcozta/deploys)
 
-[![Next.js](https://img.shields.io/badge/Next.js-13.0-blueviolet.svg)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 A modern web application built with Next.js, featuring best practices and a scalable architecture.
 
@@ -58,8 +59,9 @@ bun dev
 ```
 ├── app/                # Next.js app directory
 ├── components/         # Reusable components
-├── lib/            # Static assets
-└── server/           # Global styles
+├── lib/                # context and hooks
+└── server/             # resend email integration
+└── data.json           # portugues and eglish static data
 ```
 
 ## 🛠️ Development
@@ -68,7 +70,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## 📐 Architecture
 
-![Architecture Diagram](./.git/assets/arch.png)
+![Architecture Diagram](./.github/assets/arch.png)
 
 ## 📝 License
 
@@ -83,9 +85,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+6. Get in touch
 
 ## 📫 Contact
 
-Your Name - [@cezarcozta](https://twitter.com/cezarcozta)
+cezarcozta - [@cezarcozta](https://www.linkedin.com/in/cezarcozta/)
 
 Project Link: [https://github.com/cezarcozta/me](https://github.com/cezarcozta/me)
