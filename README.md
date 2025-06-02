@@ -57,11 +57,50 @@ bun dev
 ## 🏗️ Project Structure
 
 ```
-├── app/                # Next.js app directory
-├── components/         # Reusable components
-├── lib/                # context and hooks
-└── server/             # resend email integration
-└── data.json           # portugues and eglish static data
+├── app/                               # Next.js app directory
+├── app/about/page.tsx                 # Next.js APP route (Client)
+├── app/api/send/route.ts              # Next.js API route (Netlify Function)
+├── app/contact/page.tsx               # Next.js APP route (Client)
+├── app/contact/ContactInfo.tsx        # React.js Component
+├── app/contact/SendEmailForm.tsx      # React Form Component
+├── app/skills/page.tsx                # Next.js APP route (Client)
+├── app/skills/SkillCard.tsx           # React.js Component
+├── components/                        # Reusable React components
+├── components/action/                 # Action component
+│   ├── index.tsx
+│   ├── action.tsx
+├── components/active-link/            # Active-link component
+│   ├── index.tsx
+│   ├── active-link.tsx
+├── components/header/                 # Header component
+│   ├── index.tsx
+│   ├── header.tsx
+├── components/footer/                 # Footer component
+│   ├── index.tsx
+│   └── footer.tsx
+├── components/page-title/             # Page-title component
+│   ├── index.tsx
+│   └── page-title.tsx
+├── components/logo/                   # Logo component
+│   ├── index.tsx
+│   └── logo.tsx
+├── components/hero/                   # Hero component
+│   ├── index.tsx
+│   └── hero.tsx
+├── components/ui/                     # shadcn Folder
+├── components/ClientLayout.tsx        # Client Layout
+├── components/EmailTemplate.tsx       # Email template component
+├── components/LanguageSwitch.tsx      # Language switcher component
+├── lib/                               # Libs
+├── lib/context/                       # Contexts
+├── lib/context/LanguageContext.tsx    # Languages Context
+├── lib/hooks/                         # Hooks
+├── lib/hooks/useTranslation.ts        # Translation Hook
+├── lib/utils.ts                       # shadcn ui File
+├── lib/validator.ts                   # zod Validator
+└── server/                            # server-only
+└── server/resend.ts                   # Resend Email Integration
+└── data.json                          # Portuguese and english static text
 ```
 
 ## 🛠️ Development
