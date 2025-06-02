@@ -8,13 +8,8 @@ import { toast } from "sonner";
 import { Mail, User, MessageSquare, Loader2 } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { z } from "zod";
+import { sendEmailSchema } from "@/lib/validation";
 
-const sendEmailSchema = z.object({
-  name: z.string().min(3, { message: "Name must be at least 3 characters" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  subject: z.string().min(5, { message: "Subject must be at least 5 characters" }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters" }),
-});
 
 const initialFormData = () => {
   return {  
@@ -33,29 +28,18 @@ export const SendEmailForm = () => {
 
  const validateForm = () => {
   try {
-    sendEmailSchema.safeParse(formData)
-    setErrors(initialFormData)
+    sendEmailSchema.parse(formData)
+    setErrors({})
     return true
   } catch (err) {
     if(err instanceof z.ZodError) {
-      const error = err as z.ZodError
-      const newErrors = initialFormData();
-      error.errors.forEach((err) => {
-        const field = err.path[0];
-        if(field === 'name') {
-          newErrors[field] = error.message
-        } 
-        if(field === 'email') {
-          newErrors[field] = error.message
-        } 
-        if(field === 'subject') {
-          newErrors[field] = error.message
-        } 
-        if(field === 'message') {
-          newErrors[field] = error.message
-        }
-      })
+      const newErrors: Record<string, string> = {};
+      err.errors.forEach((error) => {
+        const [field] = error.path;
+        newErrors[field] = error.message;
+      });
       setErrors(newErrors)
+      return false
     }
     return false
   }
@@ -74,8 +58,6 @@ export const SendEmailForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-
-
     try {
       e.preventDefault();
 
@@ -83,22 +65,29 @@ export const SendEmailForm = () => {
       
       if(!isValid) {
         toast.error('Formulário inválido');
+        return;
       };
 
       setIsSubmitting(true);
       
-      const response = await fetch('/api/send',{ method: 'POST', body: JSON.stringify(formData) });
+      const response = await fetch('/api/send', { 
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData) 
+      });
       
       if (response.ok) {
         toast.success('Email enviado com sucesso');
         setFormData(initialFormData);
-        setErrors({});
+        setErrors(initialFormData);
         return;
       }  
       toast.error(`${response.statusText}`);
     } catch (error: unknown) {
-      const err = error as Error;
-      toast.error(`${err.message}`);
+      const message = error instanceof Error ? error.message :'Error sending email';
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -136,7 +125,7 @@ export const SendEmailForm = () => {
                 minLength={3}
               />
               {errors.name && (
-                <p id="name-error" className="text-red-500 text-sm" role="alert">
+                <p id="name-error" className="text-red-500 text-sm-bold" role="alert">
                   {errors.name}
                 </p>
               )}
@@ -164,7 +153,7 @@ export const SendEmailForm = () => {
                 className="bg-white/30 border-primary/20 focus:border-primary h-12 placeholder:text-gray-600"
               />
               {errors.email && (
-                <p id="email-error" className="text-red-500 text-sm" role="alert">
+                <p id="email-error" className="text-red-500 text-sm-bold" role="alert">
                   {errors.email}
                 </p>
               )}
@@ -194,7 +183,7 @@ export const SendEmailForm = () => {
               minLength={5}
             />
             {errors.subject && (
-              <p id="subject-error" className="text-red-500 text-sm" role="alert">
+              <p id="subject-error" className="text-red-500 text-sm-bold" role="alert">
                 {errors.subject}
               </p>
             )}
@@ -223,7 +212,7 @@ export const SendEmailForm = () => {
               minLength={10}
             />
             {errors.message && (
-              <p id="message-error" className="text-red-500 text-sm" role="alert">
+              <p id="message-error" className="text-red-500 text-sm-bold" role="alert">
                 {errors.message}
               </p>
             )}

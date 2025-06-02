@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const Portuguese = () => {
-  
   return (
     <>
      <h2 
@@ -97,7 +96,7 @@ const English = () => {
 
 export default function About() {
   const { t } = useTranslation();
-  console.log({t})
+
   return (
     <>
       <PageTitle
@@ -107,7 +106,6 @@ export default function About() {
 
       <main className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr] gap-8">
-          {/* Main Content */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,7 +1,7 @@
 'use client';
 
 import PageTitle from "@/components/page-title/page-title";
-import { SkillCard } from "./skillCard";
+import { SkillCard } from "./SkillCard";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const skills = [

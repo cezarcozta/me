@@ -1,7 +1,7 @@
 'use client';
 
 import PageTitle from "@/components/page-title/page-title";
-import { SendEmailForm } from "./sendEmailForm";
+import { SendEmailForm } from "./SendEmailForm";
 import { ContactInfo } from "./ContactInfo";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
