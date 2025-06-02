@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY as string);
 export async function sendEmail(data: { name: string; email: string; subject: string; message: string }) {
     const name = data.name as string;
     const email = data.email as string;
-    const from = `${name} <${email}>`;
+    const from = 'Site Portifolio <no-reply@cezarcozta.com>';
     const to = ["cezarcozta@gmail.com"];
     const subject = data.subject as string;
     const message = data.message as string;
@@ -18,7 +18,7 @@ export async function sendEmail(data: { name: string; email: string; subject: st
           from,
           to,
           subject,
-          react: EmailTemplate({ message }) as ReactElement,
+          react: EmailTemplate({ name, email, message }) as ReactElement,
         });
     } catch (error) {
         return {error};
