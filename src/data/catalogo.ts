@@ -157,9 +157,9 @@ export const catalogo: CatalogItem[] = [
     id: 18,
     item: "Comoda",
     price: 250,
-    size: "4 Bocas",
+    size: "3 Gavetas + 1 Porta",
     condition: "USADO",
-    description: "Comoda 4 Gavetas + Bau, com marcas, excelente estado.",
+    description: "Comoda 3 Gavetas + 1 Porta, com marcas, excelente estado.",
     imageUrls: ['https://drive.google.com/file/d/1WnTnJAX5Eb_ExrTSxoW0sC0tYR3aZMs2/view'],
   },
   

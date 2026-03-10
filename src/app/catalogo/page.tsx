@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -93,11 +93,19 @@ function ImageModal({
   onClose: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [isLoading, setIsLoading] = useState(true);
+
   const images = (item.imageUrls ?? []).map(normalizeDriveUrl);
   const hasImages = images.length > 0;
   const imageUrl = hasImages ? images[currentIndex] : "";
   const isDriveUrl = imageUrl.startsWith("https://drive.google.com") || imageUrl.startsWith("https://drive.usercontent.google.com");
   const proxiedImageUrl = isDriveUrl ? `/api/proxy-image?url=${encodeURIComponent(imageUrl)}` : imageUrl;
+
+  useEffect(() => {
+    if (hasImages) {
+      setIsLoading(true);
+    }
+  }, [currentIndex, hasImages]);
 
   if (!hasImages) {
     return null;
@@ -116,13 +124,24 @@ function ImageModal({
 
         <h3 className="mb-2 text-lg font-bold">{item.item}</h3>
 
-        <div className="mb-4 h-[60vh] overflow-hidden rounded-lg bg-slate-100">
+        <div className="mb-4 h-[60vh] overflow-hidden rounded-lg bg-slate-100 relative">
           <img
             src={proxiedImageUrl}
             alt={`Imagem ${currentIndex + 1} de ${item.item}`}
             className="h-full w-full object-contain"
             loading="lazy"
+            onLoad={() => setIsLoading(false)}
+            onError={() => setIsLoading(false)}
           />
+
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div className="flex items-center gap-2 rounded-lg bg-white/90 px-4 py-2 text-sm font-medium">
+                <span className="h-3 w-3 animate-spin rounded-full border-2 border-primary border-l-transparent" />
+                Carregando imagem...
+              </div>
+            </div>
+          )}
         </div>
 
         {images.length > 1 && (
