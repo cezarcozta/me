@@ -32,16 +32,18 @@ export const SendEmailForm = () => {
     setErrors({})
     return true
   } catch (err) {
-    if(err instanceof z.ZodError) {
+    if (err instanceof z.ZodError) {
       const newErrors: Record<string, string> = {};
-      err.errors.forEach((error) => {
-        const [field] = error.path;
-        newErrors[field] = error.message;
+      err.issues.forEach((issue) => {
+        const [field] = issue.path;
+        if (typeof field === "string") {
+          newErrors[field] = issue.message;
+        }
       });
-      setErrors(newErrors)
-      return false
+      setErrors(newErrors);
+      return false;
     }
-    return false
+    return false;
   }
  }
 
@@ -81,7 +83,7 @@ export const SendEmailForm = () => {
       if (response.ok) {
         toast.success('Email enviado com sucesso');
         setFormData(initialFormData);
-        setErrors(initialFormData);
+        setErrors({});
         return;
       }  
       toast.error(`${response.statusText}`);
