@@ -11,11 +11,11 @@ export type CatalogItem = {
 export const catalogo: CatalogItem[] = [
   {
     id: 1,
-    item: "Mesa Sala Completa [Mogno]",
+    item: "Mesa 4 Lugares + Mesinha Lateral [Mogno]",
     price: 850,
     size: "Mesa: 1,00 l. X 0,78 a. X 1,00 c. | Cadeiras: 0,43 l. X 1,10 a. X 0,43 p. | Mesinha: 0,21 l. X 0,50 a.",
     condition: "USADO",
-    description: "Mesa usada em mogno 4 lugares, excelente estado",
+    description: "Mesa usada em mogno 4 lugares, excelente estado + mesinha lateral.",
     imageUrls: ['https://drive.google.com/file/d/11WWjPotRoA7I-bs1hEpv5DePuHXJSK6Q/view'],
   },
   {
@@ -43,7 +43,7 @@ export const catalogo: CatalogItem[] = [
     size: "2,17 l. X 2,12 a. X 0,47 p.",
     condition: "NOVO",
     description: "Armário 6 portas com luminária, novo usado 3 meses",
-    imageUrls: ['https://drive.google.com/file/d/1RRQKG0Y4U9oIv1QSoacgOrgMbbaiCvS5/view','https://drive.google.com/file/d/1kbCGGIGhZWFGzqHiiEYkDwPbElKJBhY5/view'],
+    imageUrls: ['https://drive.google.com/file/d/1RRQKG0Y4U9oIv1QSoacgOrgMbbaiCvS5/view','https://drive.google.com/file/d/1kbCGGIGhZWFGzqHiiEYkDwPbElKJBhY5/view','https://drive.google.com/file/d/1M4pq4ZAUkmHorHtyIZJBpHWpF5kXJV0x/view'],
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ export const catalogo: CatalogItem[] = [
     size: "Módulo sobre a pia: 0,80 l. X 0,36 a. X 0,29 p.; Módulo do microondas: 0,65 l. X 2,21 a. X 0,29 p.; Módulo sobre o balcão: 1,20 l. X 0,69 a. X 0,29 p.; Balcão: 1,20 l. X 0,90 a. X 0,29 p.",
     condition: "NOVO",
     description: "Armário de cozinha completo 4 módulos, usado apenas 3 meses, excelente estado",
-    imageUrls: ['https://drive.usercontent.google.com/download?id=1Ui34IMoRecXxIym2wGXcByhZFhxlWky-&export=view&authuser=0'],
+    imageUrls: ['https://drive.usercontent.google.com/download?id=1Ui34IMoRecXxIym2wGXcByhZFhxlWky-&export=view&authuser=0','https://drive.google.com/file/d/1booB5XP9PqMNQJK7OZYKmnaMpPHaIvOH/view','https://drive.google.com/file/d/150NzVBSFEszRO-xTDmfGbgbWwB80qDE-/view','https://drive.google.com/file/d/1dhY1jLKF81mwn8jR70C5zbEAKbzD7MI4/view','https://drive.google.com/file/d/1ljpgxIRx4S-LAa3Y5xbeh_9B6rlLJZdr/view'],
   },
   {
     id: 8,
@@ -142,6 +142,25 @@ export const catalogo: CatalogItem[] = [
     size: "2,35 l. X 2,35 a.",
     condition: "USADO",
     description: "Cortina lisa branca",
-    imageUrls: [],
+    imageUrls: ['https://drive.google.com/file/d/1SEde4isWBxbHacC0baz_4Y3cHC-mJ0SI/view'],
   },
+  {
+    id: 17,
+    item: "Depurador de Ar Suggar",
+    price: 250,
+    size: "4 Bocas",
+    condition: "Novo",
+    description: "Depurador de Ar Suggar usado menos de 3 meses em excelente estado, sem detalhes",
+    imageUrls: ['https://drive.google.com/file/d/1slLDGr2EVF2fPN7uiNfi242cp1NLhsNP/view'],
+  },
+  {
+    id: 18,
+    item: "Comoda",
+    price: 250,
+    size: "4 Bocas",
+    condition: "USADO",
+    description: "Comoda 4 Gavetas + Bau, com marcas, excelente estado.",
+    imageUrls: ['https://drive.google.com/file/d/1WnTnJAX5Eb_ExrTSxoW0sC0tYR3aZMs2/view'],
+  },
+  
 ];
