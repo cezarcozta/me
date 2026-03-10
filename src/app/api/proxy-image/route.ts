@@ -40,7 +40,7 @@ export async function GET(request: Request) {
   const contentType = apiRes.headers.get("content-type") || "application/octet-stream";
   const headers = new Headers();
   headers.set("Content-Type", contentType);
-  headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=59");
+  headers.set("Cache-Control", "private, no-store, max-age=0");
 
   return new Response(apiRes.body, { status: apiRes.status, headers });
 }
