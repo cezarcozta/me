@@ -3,12 +3,14 @@
         "pt": {
             "about": "Sobre",
             "skills": "Habilidades",
-            "contact": "Contato"
+            "contact": "Contato",
+            "catalog": "Catálogo"
         },
         "en": {
             "about": "About",
             "skills": "Skills",
-            "contact": "Contact"
+            "contact": "Contact",
+            "catalog": "Catalog"
         }
     },
     "about": {
